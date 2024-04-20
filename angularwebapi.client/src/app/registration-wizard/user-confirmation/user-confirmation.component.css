@@ -7,3 +7,9 @@
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+.content-center {
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+}

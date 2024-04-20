@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,6 +30,7 @@ import { UserConfirmationComponent } from './user-confirmation/user-confirmation
 		MatCardModule,
 		MatSelectModule,
 		MatStepperModule,
+		MatProgressSpinnerModule,
 		MatInputModule,
 		FormsModule,
 		ReactiveFormsModule,

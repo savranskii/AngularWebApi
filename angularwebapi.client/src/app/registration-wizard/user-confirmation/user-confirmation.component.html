@@ -3,17 +3,26 @@
 
 	<mat-card class="data-preview">
 		<mat-card-content>
-			<span>Login: {{formStep1.controls["login"].value}}</span>
+			<span><b>Login:</b> {{formStep1.controls["login"].value}}</span>
 			<br>
-			<span>Country: {{formStep2.controls["country"].value}}</span>
+			<span><b>Password:</b> {{formStep1.controls["password"].value}}</span>
 			<br>
-			<span>Province: {{formStep2.controls["province"].value}}</span>
+			<span><b>Country:</b> {{formStep2.controls["country"].value}}</span>
+			<br>
+			<span><b>Province:</b> {{formStep2.controls["province"].value}}</span>
 		</mat-card-content>
 	</mat-card>
 
-	<div>
-		<button mat-button matStepperPrevious>Back</button>
-		<button mat-button (click)="stepper.reset()">Reset</button>
-		<button mat-button (click)="save()">Submit</button>
-	</div>
+	@if(!isSending) {
+		<div>
+			<button mat-button matStepperPrevious>Back</button>
+			<button mat-button (click)="stepper.reset()">Reset</button>
+			<button mat-button (click)="save()">Submit</button>
+		</div>
+	}
+	@if(isSending) {
+		<div class="content-center">
+			<mat-spinner></mat-spinner>
+		</div>
+	}
 </div>
