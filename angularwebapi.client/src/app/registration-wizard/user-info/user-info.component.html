@@ -17,6 +17,10 @@
 				<mat-label>Confirm password</mat-label>
 				<input matInput placeholder="Confirm password" type="password" formControlName="passwordConfirmation" required>
 			</mat-form-field>
+			<br>
+			@if(formGroup.controls['passwordConfirmation'].touched && formGroup.errors?.['passwordNoMatch']) {
+				<mat-error>Password does'nt match.</mat-error>
+			}
 		</p>
 		<div>
 			<button mat-button matStepperNext>Next</button>
