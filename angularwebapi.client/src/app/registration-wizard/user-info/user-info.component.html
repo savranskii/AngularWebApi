@@ -1,0 +1,25 @@
+<div class="step-wrapper">
+	<form [formGroup]="formGroup">
+		<p>
+			<mat-form-field>
+				<mat-label>Login</mat-label>
+				<input matInput placeholder="Login" formControlName="login" required>
+			</mat-form-field>
+		</p>
+		<p>
+			<mat-form-field>
+				<mat-label>Password</mat-label>
+				<input matInput placeholder="Password" type="password" formControlName="password" required>
+			</mat-form-field>
+		</p>
+		<p>
+			<mat-form-field>
+				<mat-label>Confirm password</mat-label>
+				<input matInput placeholder="Confirm password" type="password" formControlName="passwordConfirmation" required>
+			</mat-form-field>
+		</p>
+		<div>
+			<button mat-button matStepperNext>Next</button>
+		</div>
+	</form>
+</div>

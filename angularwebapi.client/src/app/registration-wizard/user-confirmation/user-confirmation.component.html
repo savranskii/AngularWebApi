@@ -1,0 +1,19 @@
+<div class="step-wrapper">
+	<p>You are almost done.</p>
+
+	<mat-card class="data-preview">
+		<mat-card-content>
+			<span>Login: {{formStep1.controls["login"].value}}</span>
+			<br>
+			<span>Country: {{formStep2.controls["country"].value}}</span>
+			<br>
+			<span>Province: {{formStep2.controls["province"].value}}</span>
+		</mat-card-content>
+	</mat-card>
+
+	<div>
+		<button mat-button matStepperPrevious>Back</button>
+		<button mat-button (click)="stepper.reset()">Reset</button>
+		<button mat-button (click)="save()">Submit</button>
+	</div>
+</div>
