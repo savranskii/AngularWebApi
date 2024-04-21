@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Country } from '../models/Country';
+import { Location } from '../models/Location';
 import { API } from '../../constants/api';
 
 @Injectable({
@@ -10,6 +10,6 @@ export class LocationService {
   constructor(private _http: HttpClient) { }
 
 	getLocations() {
-		return this._http.get<Country[]>(API.locations);
+		return this._http.get<Location[]>(API.locations);
 	}
 }

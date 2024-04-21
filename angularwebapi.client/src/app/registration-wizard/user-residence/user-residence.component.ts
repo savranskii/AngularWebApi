@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Country } from '../models/Country';
+import { Location } from '../models/Location';
 import { ResidenceFormGroup } from '../models/ResidenceFormGroup';
 import { LocationService } from '../services/location.service';
 import { NotificationService } from '../../services/notification.service';
-import { Province } from '../models/Province';
 
 @Component({
 	selector: 'app-user-residence',
@@ -16,7 +15,7 @@ export class UserResidenceComponent implements OnInit {
 	formGroup!: FormGroup<ResidenceFormGroup>;
 
 	isLoading: boolean = true;
-	countries: Country[] = [];
+	countries: Location[] = [];
 
 	constructor(
 		private _locationService: LocationService,
@@ -33,7 +32,7 @@ export class UserResidenceComponent implements OnInit {
 		});
 	}
 
-	getProvinces(): Province[] {
+  getProvinces(): string[] {
 		console.log(this.formGroup.controls.country.value);
 		return [];
 	}
