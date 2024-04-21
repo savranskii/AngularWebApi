@@ -7,7 +7,7 @@ const PROXY_CONFIG = [
   {
     context: [
       "/api/v1/user/registration",
-      "/api/v1/user/locations"
+      "/api/v1/country"
     ],
     target,
     secure: false

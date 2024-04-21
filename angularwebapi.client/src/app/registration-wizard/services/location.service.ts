@@ -10,6 +10,6 @@ export class LocationService {
   constructor(private _http: HttpClient) { }
 
 	getLocations() {
-		return this._http.get<Location[]>(API.locations);
+		return this._http.get<Location[]>(API.countries);
 	}
 }

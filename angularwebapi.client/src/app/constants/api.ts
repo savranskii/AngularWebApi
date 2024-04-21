@@ -1,4 +1,5 @@
 export const API = {
   registration: '/api/v1/user/registration',
-  locations: '/api/v1/user/locations',
+  countries: '/api/v1/country',
+  provinces: '/api/v1/country/{id}/provinces',
 }
