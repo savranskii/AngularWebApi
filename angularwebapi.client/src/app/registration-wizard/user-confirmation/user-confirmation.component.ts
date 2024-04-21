@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
-import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { RegistrationService } from '../services/registration.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
 	selector: 'app-user-confirmation',
@@ -16,31 +16,28 @@ export class UserConfirmationComponent {
 
 	isSending: boolean = false;
 
-	constructor(private _snackBar: MatSnackBar, private _http: HttpClient) { }
+	constructor(
+		private _registrationService: RegistrationService,
+		private _notificationService: NotificationService
+	) { }
 
 	save() {
 		this.isSending = true;
 
-		const formData = new FormData();
-		formData.append('login', this.formStep1.controls['login'].value);
-		formData.append('password', this.formStep1.controls['password'].value);
-		formData.append('country', this.formStep2.controls['country'].value);
-		formData.append('province', this.formStep2.controls['province'].value);
+		const request = {
+			login: this.formStep1.controls['login'].value,
+			password: this.formStep1.controls['password'].value,
+			country: this.formStep2.controls['country'].value,
+			province: this.formStep2.controls['province'].value,
+		};
 
-		this._http.post('/registration', formData).subscribe({
+		this._registrationService.completeRegistration(request).subscribe({
 			next: () => {
 				this.stepper.reset();
-				this.openSnackBar('Success registration!');
-				this.isSending = false;
+				this._notificationService.show('Success registration!');
 			},
-			error: (error) => {
-				this.openSnackBar(`Unsuccess registration! ${error.message}`);
-				this.isSending = false;
-			}
+			error: (error) => this._notificationService.show(`Unsuccess registration! ${error.message}`),
+			complete: () => this.isSending = false,
 		});
 	}
-
-	openSnackBar(message: string) {
-    this._snackBar.open(message, 'Close');
-  }
 }
