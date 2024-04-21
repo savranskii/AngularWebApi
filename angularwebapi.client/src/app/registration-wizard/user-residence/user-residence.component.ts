@@ -33,7 +33,11 @@ export class UserResidenceComponent implements OnInit {
 	}
 
   getProvinces(): string[] {
-		console.log(this.formGroup.controls.country.value);
-		return [];
+		const country = this.formGroup.controls.country.value;
+
+		if (country === '')
+			return [];
+
+		return this.countries.find(c => c.name == country)?.provinces ?? [];
 	}
 }
