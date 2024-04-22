@@ -1,6 +1,6 @@
 ﻿using AngularWebApi.Infrastructure.Options;
 
-namespace AngularWebApi.Server.Extensions;
+namespace AngularWebApi.Server.Extensions.Configurations;
 
 public static class OptionsConfiguration
 {

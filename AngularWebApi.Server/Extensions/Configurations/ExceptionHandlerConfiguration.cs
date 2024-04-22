@@ -1,6 +1,6 @@
 ﻿using AngularWebApi.Server.ExceptionHandlers;
 
-namespace AngularWebApi.Server.Extensions;
+namespace AngularWebApi.Server.Extensions.Configurations;
 
 public static class ExceptionHandlerConfiguration
 {

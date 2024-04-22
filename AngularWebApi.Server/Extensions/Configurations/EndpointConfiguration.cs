@@ -4,7 +4,7 @@ using AngularWebApi.Server.Validators;
 using AutoMapper;
 using FluentValidation;
 
-namespace AngularWebApi.Server.Extensions;
+namespace AngularWebApi.Server.Extensions.Configurations;
 
 public static class EndpointConfiguration
 {

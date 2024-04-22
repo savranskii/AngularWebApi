@@ -1,7 +1,7 @@
 ﻿using AngularWebApi.Infrastructure;
 using AngularWebApi.Infrastructure.Models;
 
-namespace AngularWebApi.Server.Extensions;
+namespace AngularWebApi.Server.Extensions.Configurations;
 
 public static class DbConfiguration
 {

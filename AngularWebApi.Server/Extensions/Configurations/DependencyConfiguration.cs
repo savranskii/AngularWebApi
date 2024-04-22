@@ -1,7 +1,7 @@
 ﻿using AngularWebApi.Infrastructure.Interfaces;
 using AngularWebApi.Infrastructure.Repositories;
 
-namespace AngularWebApi.Server.Extensions;
+namespace AngularWebApi.Server.Extensions.Configurations;
 
 public static class DependencyConfiguration
 {

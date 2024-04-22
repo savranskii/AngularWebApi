@@ -1,4 +1,4 @@
-using AngularWebApi.Server.Extensions;
+using AngularWebApi.Server.Extensions.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +9,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDependencies();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureExceptionHandler();
+builder.ConfigureRateLimit();
 builder.ConfigureCors();
 builder.ConfigureDb();
 

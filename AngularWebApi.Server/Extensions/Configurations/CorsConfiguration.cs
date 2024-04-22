@@ -1,4 +1,4 @@
-﻿namespace AngularWebApi.Server.Extensions;
+﻿namespace AngularWebApi.Server.Extensions.Configurations;
 
 public static class CorsConfiguration
 {
