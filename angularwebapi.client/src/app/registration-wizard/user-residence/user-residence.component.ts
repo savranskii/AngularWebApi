@@ -88,9 +88,12 @@ export class UserResidenceComponent implements OnInit {
 			next: () => {
 				this.stepper.reset();
 				this._notificationService.show('Successful registration!');
+				this.isSending = false
 			},
-			error: (error) => this._notificationService.show(`Unsuccessful registration! ${error.message}`),
-			complete: () => this.isSending = false,
+			error: (error) => {
+				this._notificationService.show(`Unsuccessful registration! ${error.error.message}`);
+				this.isSending = false
+			}
 		});
 	}
 }
