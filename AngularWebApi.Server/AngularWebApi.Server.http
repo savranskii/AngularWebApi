@@ -1,6 +1,24 @@
-@AngularWebApi.Server_HostAddress = http://localhost:5159
+@AngularWebApi.Server_HostAddress = https://localhost:7207
 
-GET {{AngularWebApi.Server_HostAddress}}/weatherforecast/
-Accept: application/json
+###
+
+GET {{AngularWebApi.Server_HostAddress}}/api/v1/country
+
+###
+
+GET {{AngularWebApi.Server_HostAddress}}/api/v1/country/1/provinces
+
+###
+
+POST {{AngularWebApi.Server_HostAddress}}/api/v1/user/registration
+Content-Type: application/json
+
+{
+  "login": "test@mail.com",
+  "password": "123rwe",
+  "isAgreeToWorkForFood": true,
+  "country": 1,
+  "province": 2
+}
 
 ###
