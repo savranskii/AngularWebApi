@@ -5,6 +5,7 @@ import { UserResidenceComponent } from './user-residence/user-residence.componen
 import { UserWizardComponent } from './user-wizard/user-wizard.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -28,6 +29,7 @@ import { UserConfirmationComponent } from './user-confirmation/user-confirmation
 		MatButtonModule,
 		MatFormFieldModule,
 		MatCardModule,
+		MatCheckboxModule,
 		MatSelectModule,
 		MatStepperModule,
 		MatProgressSpinnerModule,

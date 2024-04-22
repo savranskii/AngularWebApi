@@ -5,22 +5,33 @@
 				<mat-label>Login</mat-label>
 				<input matInput placeholder="Login" formControlName="login" required>
 			</mat-form-field>
+			<mat-error *ngIf="hasError('login')">
+				Login must be a valid email.
+			</mat-error>
 		</p>
 		<p>
 			<mat-form-field>
 				<mat-label>Password</mat-label>
 				<input matInput placeholder="Password" type="password" formControlName="password" required>
 			</mat-form-field>
+			<mat-error *ngIf="hasError('password')">
+				Password must contain min 1 digit and min 1 letter.
+			</mat-error>
 		</p>
 		<p>
 			<mat-form-field>
 				<mat-label>Confirm password</mat-label>
 				<input matInput placeholder="Confirm password" type="password" formControlName="passwordConfirmation" required>
 			</mat-form-field>
-			<br>
-			@if(formGroup.controls['passwordConfirmation'].touched && formGroup.errors?.['passwordNoMatch']) {
-				<mat-error>Password does'nt match.</mat-error>
-			}
+			<mat-error *ngIf="isUsed('passwordConfirmation') && formGroup.errors?.['passwordNoMatch']">
+				Password does'nt match.
+			</mat-error>
+		</p>
+		<p>
+			<mat-checkbox formControlName="isAgreeToWorkForFood" required>Agree to work for food</mat-checkbox>
+			<mat-error *ngIf="hasError('isAgreeToWorkForFood')">
+				You have to be agree.
+			</mat-error>
 		</p>
 		<div>
 			<button mat-button matStepperNext>Next</button>
