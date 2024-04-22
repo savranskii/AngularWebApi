@@ -7,7 +7,7 @@ public static class CorsConfiguration
     public static void ConfigureCors(this WebApplicationBuilder builder)
     {
         builder.Services.AddCors(o => o.AddPolicy(PolicyName, c => c
-            .WithOrigins("https://localhost:4200")
+            .WithOrigins(builder.Configuration.GetValue<string>("Cors") ?? "*")
             .AllowAnyHeader()
             .AllowAnyMethod()));
     }
