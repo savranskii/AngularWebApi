@@ -13,6 +13,7 @@ builder.ConfigureDb();
 
 var app = builder.Build();
 
+app.InitDatabase();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseCors(CorsConfiguration.PolicyName);
