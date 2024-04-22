@@ -2,6 +2,7 @@
 using AngularWebApi.Infrastructure.Interfaces;
 using AngularWebApi.Server.Validators;
 using AutoMapper;
+using FluentValidation;
 
 namespace AngularWebApi.Server.Extensions;
 
@@ -11,12 +12,7 @@ public static class EndpointConfiguration
     {
         app.MapPost("/api/v1/user/registration", async (RegistrationRequest req, IRepository repo) =>
         {
-            var result = await new RegistrationValidator().ValidateAsync(req);
-            if (!result.IsValid)
-            {
-                var errors = result.Errors.Select(e => e.ErrorMessage).ToList();
-                return Results.BadRequest(new { Message = string.Join(" ", errors) });
-            }
+            await new RegistrationValidator().ValidateAndThrowAsync(req);
 
             repo.RegisterUser(req);
             await repo.SaveAsync();

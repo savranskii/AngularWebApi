@@ -8,7 +8,8 @@ builder.ConfigureOptions();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDependencies();
-builder.Services.AddAutoMapper(typeof(Program)); 
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.ConfigureExceptionHandler();
 builder.ConfigureCors();
 builder.ConfigureDb();
 
@@ -18,6 +19,7 @@ app.InitDatabase();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseCors(CorsConfiguration.PolicyName);
+app.UseExceptionHandler(opt => { });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

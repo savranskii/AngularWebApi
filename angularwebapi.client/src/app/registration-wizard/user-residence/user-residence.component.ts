@@ -11,6 +11,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { Province } from '../models/Province';
 import { MatSelectChange } from '@angular/material/select';
 import { Router } from '@angular/router';
+import { ResponseError } from '../../models/ResponseError';
 
 @Component({
 	selector: 'app-user-residence',
@@ -39,7 +40,7 @@ export class UserResidenceComponent implements OnInit {
 			next: (countries) => {
 				this.countries = countries;
 			},
-			error: (error) => this._notificationService.show(`Unable to retrieve countries! ${error.message}`),
+			error: (error) => this._notificationService.show((error.error as ResponseError).detail),
 			complete: () => this.isLoading = false,
 		});
 	}
@@ -55,7 +56,7 @@ export class UserResidenceComponent implements OnInit {
 			next: (provinces) => {
 				this.provinces = provinces;
 			},
-			error: (error) => this._notificationService.show(`Unable to retrieve provinces! ${error.message}`),
+			error: (error) => this._notificationService.show((error.error as ResponseError).detail),
 			complete: () => this.isLoading = false,
 		});
 	}
@@ -93,7 +94,7 @@ export class UserResidenceComponent implements OnInit {
 				this._router.navigate(['/registration/done']);
 			},
 			error: (error) => {
-				this._notificationService.show(`Unsuccessful registration! ${error.error.message}`);
+				this._notificationService.show((error.error as ResponseError).detail);
 				this.isSending = false;
 			}
 		});
