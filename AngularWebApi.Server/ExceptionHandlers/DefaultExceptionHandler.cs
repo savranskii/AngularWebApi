@@ -1,6 +1,6 @@
-﻿using System.Net;
-using Microsoft.AspNetCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace AngularWebApi.Server.ExceptionHandlers;
 
