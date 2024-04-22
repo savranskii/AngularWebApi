@@ -52,6 +52,7 @@ export class UserResidenceComponent implements OnInit {
 		if (countryId == null)
 			this.provinces = [];
 
+		this.secondFormGroup.controls.province.setValue(null);
 		this._locationService.getProvinces(countryId as number).subscribe({
 			next: (provinces) => {
 				this.provinces = provinces;
