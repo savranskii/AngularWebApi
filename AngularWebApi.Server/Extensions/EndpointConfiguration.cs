@@ -3,7 +3,7 @@ using AngularWebApi.Infrastructure.Interfaces;
 
 namespace AngularWebApi.Server.Extensions;
 
-public static class EndpointExtension
+public static class EndpointConfiguration
 {
     public static void MapUserEndpoint(this WebApplication app)
     {
