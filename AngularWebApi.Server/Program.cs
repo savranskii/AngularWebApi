@@ -8,6 +8,7 @@ builder.ConfigureOptions();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDependencies();
+builder.Services.AddAutoMapper(typeof(Program)); 
 builder.ConfigureCors();
 builder.ConfigureDb();
 
