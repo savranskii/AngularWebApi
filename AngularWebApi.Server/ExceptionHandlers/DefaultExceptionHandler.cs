@@ -6,7 +6,8 @@ namespace AngularWebApi.Server.ExceptionHandlers;
 
 public class DefaultExceptionHandler(ILogger<DefaultExceptionHandler> logger) : IExceptionHandler
 {
-    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception,
+        CancellationToken cancellationToken)
     {
         logger.LogError(exception, "An unexpected error occurred");
 
@@ -17,7 +18,7 @@ public class DefaultExceptionHandler(ILogger<DefaultExceptionHandler> logger) : 
             Title = "An unexpected error occurred",
             Detail = exception.Message,
             Instance = $"{httpContext.Request.Method} {httpContext.Request.Path}"
-        }, cancellationToken: cancellationToken);
+        }, cancellationToken);
 
         return true;
     }

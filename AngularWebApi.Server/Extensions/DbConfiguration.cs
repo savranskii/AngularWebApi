@@ -22,7 +22,7 @@ public static class DbConfiguration
     {
         if (context.Countries.Any())
             return;
-        
+
         var countries = new List<Country>
         {
             new()
@@ -31,7 +31,7 @@ public static class DbConfiguration
                 [
                     new Province { Id = 1, CountryId = 1, Name = "Province 1.1" },
                     new Province { Id = 2, CountryId = 1, Name = "Province 1.2" },
-                    new Province { Id = 3, CountryId = 1, Name = "Province 1.3" },
+                    new Province { Id = 3, CountryId = 1, Name = "Province 1.3" }
                 ]
             },
             new()
