@@ -24,9 +24,12 @@
 				</mat-error>
 			</mat-form-field>
 		</p>
-		<div>
+		<div *ngIf="!isSending">
 			<button mat-button matStepperPrevious>Back</button>
 			<button mat-button (click)="save()">Submit</button>
+		</div>
+		<div *ngIf="isSending || isLoading" class="loader">
+			<mat-spinner></mat-spinner>
 		</div>
 	</form>
 </div>
