@@ -10,12 +10,6 @@ export class RegistrationService {
 	constructor(private _http: HttpClient) { }
 
 	completeRegistration(request: RegistrationRequest) {
-		const formData = new FormData();
-		formData.append('login', request.login);
-		formData.append('password', request.password);
-		formData.append('country', request.country);
-		formData.append('province', request.province);
-
-		return this._http.post(API.registration, formData);
+		return this._http.post(API.registration, request);
 	}
 }

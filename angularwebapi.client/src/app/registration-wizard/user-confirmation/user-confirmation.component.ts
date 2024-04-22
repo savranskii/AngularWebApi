@@ -3,6 +3,9 @@ import { FormGroup } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { RegistrationService } from '../services/registration.service';
 import { NotificationService } from '../../services/notification.service';
+import { InfoFormGroup } from '../models/InfoFormGroup';
+import { ResidenceFormGroup } from '../models/ResidenceFormGroup';
+import { RegistrationRequest } from '../models/RegistrationRequest';
 
 @Component({
 	selector: 'app-user-confirmation',
@@ -11,8 +14,8 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class UserConfirmationComponent {
 	@Input() stepper!: MatStepper;
-	@Input() formStep1!: FormGroup;
-	@Input() formStep2!: FormGroup;
+	@Input() formStep1!: FormGroup<InfoFormGroup>;
+	@Input() formStep2!: FormGroup<ResidenceFormGroup>;
 
 	isSending: boolean = false;
 
@@ -25,18 +28,17 @@ export class UserConfirmationComponent {
 		this.isSending = true;
 
 		const request = {
-			login: this.formStep1.controls['login'].value,
-			password: this.formStep1.controls['password'].value,
-			country: this.formStep2.controls['country'].value,
-			province: this.formStep2.controls['province'].value,
+			...this.formStep1.value,
+			...this.formStep2.value
 		};
+		delete request.passwordConfirmation;
 
-		this._registrationService.completeRegistration(request).subscribe({
+		this._registrationService.completeRegistration(request as RegistrationRequest).subscribe({
 			next: () => {
 				this.stepper.reset();
-				this._notificationService.show('Success registration!');
+				this._notificationService.show('Successful registration!');
 			},
-			error: (error) => this._notificationService.show(`Unsuccess registration! ${error.message}`),
+			error: (error) => this._notificationService.show(`Unsuccessful registration! ${error.message}`),
 			complete: () => this.isSending = false,
 		});
 	}
