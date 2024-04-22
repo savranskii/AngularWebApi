@@ -18,8 +18,8 @@ export class UserWizardComponent {
 	}, { validators: confirmPasswordValidator }) as FormGroup<InfoFormGroup>;
 
 	secondFormGroup = this._formBuilder.group({
-		country: ['', [Validators.required]],
-		province: ['', [Validators.required]],
+		country: [null, [Validators.required]],
+		province: [null, [Validators.required]],
 	}) as FormGroup<ResidenceFormGroup>;
 
 	constructor(private _formBuilder: FormBuilder) { }

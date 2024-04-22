@@ -1,9 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Location } from '../models/Location';
+import { Country } from '../models/Country';
 import { ResidenceFormGroup } from '../models/ResidenceFormGroup';
 import { LocationService } from '../services/location.service';
 import { NotificationService } from '../../services/notification.service';
+import { InfoFormGroup } from '../models/InfoFormGroup';
+import { RegistrationService } from '../services/registration.service';
+import { RegistrationRequest } from '../models/RegistrationRequest';
+import { MatStepper } from '@angular/material/stepper';
+import { Province } from '../models/Province';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
 	selector: 'app-user-residence',
@@ -11,33 +17,80 @@ import { NotificationService } from '../../services/notification.service';
 	styleUrl: './user-residence.component.css'
 })
 export class UserResidenceComponent implements OnInit {
-	@Input()
-	formGroup!: FormGroup<ResidenceFormGroup>;
+	@Input({ required: true }) stepper!: MatStepper;
+	@Input({ required: true }) firstFormGroup!: FormGroup<InfoFormGroup>;
+	@Input({ required: true }) secondFormGroup!: FormGroup<ResidenceFormGroup>;
 
+	isSending: boolean = false;
 	isLoading: boolean = true;
-	countries: Location[] = [];
+	countries: Country[] = [];
+	provinces: Province[] = [];
 
 	constructor(
 		private _locationService: LocationService,
+		private _registrationService: RegistrationService,
 		private _notificationService: NotificationService
 	) { }
 
 	ngOnInit(): void {
-		this._locationService.getLocations().subscribe({
+		this._locationService.getCountries().subscribe({
 			next: (countries) => {
 				this.countries = countries;
 			},
-			error: (error) => this._notificationService.show(`Unable to retrieve locations! ${error.message}`),
+			error: (error) => this._notificationService.show(`Unable to retrieve countries! ${error.message}`),
 			complete: () => this.isLoading = false,
 		});
 	}
 
-  getProvinces(): string[] {
-		const country = this.formGroup.controls.country.value;
+	loadProvinces(e: MatSelectChange): void {
+		this.isLoading = true;
+		const countryId = e.value;
 
-		if (country === '')
-			return [];
+		if (countryId == null)
+			this.provinces = [];
 
-		return this.countries.find(c => c.name == country)?.provinces ?? [];
+		this._locationService.getProvinces(countryId as number).subscribe({
+			next: (provinces) => {
+				this.provinces = provinces;
+			},
+			error: (error) => this._notificationService.show(`Unable to retrieve provinces! ${error.message}`),
+			complete: () => this.isLoading = false,
+		});
+	}
+
+	hasCountryError(): boolean {
+		return this.secondFormGroup.controls.country.invalid &&
+			this.secondFormGroup.controls.country.dirty &&
+			this.secondFormGroup.controls.country.errors != null;
+	}
+
+	hasProvinceError(): boolean {
+		return this.secondFormGroup.controls.province.invalid &&
+			this.secondFormGroup.controls.province.dirty &&
+			this.secondFormGroup.controls.province.errors != null;
+	}
+
+	save() {
+		if (!this.firstFormGroup.valid || !this.secondFormGroup.valid) {
+			this._notificationService.show('Form is not valid. Please check required fields.');
+			return;
+		}
+
+		this.isSending = true;
+
+		const request = {
+			...this.firstFormGroup.value,
+			...this.secondFormGroup.value
+		};
+		delete request.passwordConfirmation;
+
+		this._registrationService.completeRegistration(request as RegistrationRequest).subscribe({
+			next: () => {
+				this.stepper.reset();
+				this._notificationService.show('Successful registration!');
+			},
+			error: (error) => this._notificationService.show(`Unsuccessful registration! ${error.message}`),
+			complete: () => this.isSending = false,
+		});
 	}
 }

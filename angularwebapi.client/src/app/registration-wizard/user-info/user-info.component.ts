@@ -7,8 +7,7 @@ import { FormGroup } from '@angular/forms';
 	styleUrl: './user-info.component.css'
 })
 export class UserInfoComponent {
-	@Input()
-	formGroup!: FormGroup;
+	@Input({ required: true }) formGroup!: FormGroup;
 
 	isUsed(controlName: string): boolean {
 		return this.formGroup.controls[controlName].invalid &&

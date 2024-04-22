@@ -3,10 +3,7 @@
 		<app-user-info [formGroup]="firstFormGroup"></app-user-info>
 	</mat-step>
 	<mat-step [stepControl]="secondFormGroup" label="Step 2">
-		<app-user-residence [formGroup]="secondFormGroup"></app-user-residence>
-	</mat-step>
-	<mat-step label="Final step">
-		<app-user-confirmation [formStep1]="firstFormGroup" [formStep2]="secondFormGroup"
-			[stepper]="stepper"></app-user-confirmation>
+		<app-user-residence [stepper]="stepper" [firstFormGroup]="firstFormGroup"
+			[secondFormGroup]="secondFormGroup"></app-user-residence>
 	</mat-step>
 </mat-stepper>

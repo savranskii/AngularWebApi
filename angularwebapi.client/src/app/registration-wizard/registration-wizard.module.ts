@@ -12,14 +12,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UserConfirmationComponent } from './user-confirmation/user-confirmation.component';
 
 @NgModule({
 	declarations: [
 		UserInfoComponent,
 		UserResidenceComponent,
 		UserWizardComponent,
-		UserConfirmationComponent,
 	],
 	exports: [
 		UserWizardComponent,
