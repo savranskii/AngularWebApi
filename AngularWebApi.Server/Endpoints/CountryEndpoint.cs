@@ -7,21 +7,15 @@ namespace AngularWebApi.Server.Endpoints;
 
 public static class CountryEndpoint
 {
-    public static Func<IRepository, IMapper, Task<Ok<List<CountryDto>>>> GetCountriesAsync()
+    public static async Task<Ok<List<CountryDto>>> GetCountriesAsync(IRepository repo, IMapper mapper)
     {
-        return async (IRepository repo, IMapper mapper) =>
-        {
-            var items = await repo.GetCountriesAsync();
-            return TypedResults.Ok(mapper.Map<List<CountryDto>>(items));
-        };
+        var items = await repo.GetCountriesAsync();
+        return TypedResults.Ok(mapper.Map<List<CountryDto>>(items));
     }
 
-    public static Func<int, IRepository, IMapper, Task<Ok<List<ProvinceDto>>>> GetProvincesAsync()
+    public static async Task<Ok<List<ProvinceDto>>> GetProvincesAsync(int id, IRepository repo, IMapper mapper)
     {
-        return async (int id, IRepository repo, IMapper mapper) =>
-        {
-            var items = await repo.GetProvincesByCountryAsync(id);
-            return TypedResults.Ok(mapper.Map<List<ProvinceDto>>(items));
-        };
+        var items = await repo.GetProvincesByCountryAsync(id);
+        return TypedResults.Ok(mapper.Map<List<ProvinceDto>>(items));
     }
 }
