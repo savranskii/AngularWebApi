@@ -13,17 +13,17 @@ public class ApplicationRepository(ApplicationDbContext context, IOptions<Applic
 {
     private readonly ApplicationDbContext _context = context;
 
+    public async Task<bool> IsUserExistAsync(string login)
+    {
+        return await _context.Users.AnyAsync(u => u.Login == login);
+    }
+
     public void RegisterUser(RegistrationRequest data)
     {
         _context.Users.Add(new User
         {
             Login = data.Login,
-            Password = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                data.Password,
-                Encoding.ASCII.GetBytes(options.Value.Salt),
-                KeyDerivationPrf.HMACSHA256,
-                100000,
-                256 / 8)),
+            Password = SaltPassword(data.Password, options.Value.Salt),
             IsAgreeToWorkForFood = data.IsAgreeToWorkForFood,
             CountryId = data.Country,
             ProvinceId = data.Province
@@ -43,5 +43,15 @@ public class ApplicationRepository(ApplicationDbContext context, IOptions<Applic
     public async Task SaveAsync()
     {
         await _context.SaveChangesAsync();
+    }
+
+    private static string SaltPassword(string password, string salt)
+    {
+        return Convert.ToBase64String(KeyDerivation.Pbkdf2(
+            password,
+            Encoding.ASCII.GetBytes(salt),
+            KeyDerivationPrf.HMACSHA256,
+            100000,
+            256 / 8));
     }
 }
