@@ -10,6 +10,7 @@ import { RegistrationRequest } from '../models/RegistrationRequest';
 import { MatStepper } from '@angular/material/stepper';
 import { Province } from '../models/Province';
 import { MatSelectChange } from '@angular/material/select';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-user-residence',
@@ -29,7 +30,8 @@ export class UserResidenceComponent implements OnInit {
 	constructor(
 		private _locationService: LocationService,
 		private _registrationService: RegistrationService,
-		private _notificationService: NotificationService
+		private _notificationService: NotificationService,
+		private _router: Router
 	) { }
 
 	ngOnInit(): void {
@@ -87,12 +89,12 @@ export class UserResidenceComponent implements OnInit {
 		this._registrationService.completeRegistration(request as RegistrationRequest).subscribe({
 			next: () => {
 				this.stepper.reset();
-				this._notificationService.show('Successful registration!');
-				this.isSending = false
+				this.isSending = false;
+				this._router.navigate(['/registration/done']);
 			},
 			error: (error) => {
 				this._notificationService.show(`Unsuccessful registration! ${error.error.message}`);
-				this.isSending = false
+				this.isSending = false;
 			}
 		});
 	}
