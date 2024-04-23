@@ -26,7 +26,7 @@ public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProg
 
             services.Remove(dbConnectionDescriptor!);
 
-            // Create open SqliteConnection so EF won't automatically close it.
+            // Create open SqLiteConnection so EF won't automatically close it.
             services.AddSingleton<DbConnection>(container =>
             {
                 var connection = new SqliteConnection("DataSource=:memory:");
