@@ -1,6 +1,6 @@
-﻿using AngularWebApi.Infrastructure.DTOs;
-using AngularWebApi.Infrastructure.Exceptions;
-using AngularWebApi.Infrastructure.Interfaces;
+﻿using AngularWebApi.ApplicationCore.Exceptions;
+using AngularWebApi.ApplicationCore.Interfaces;
+using AngularWebApi.ApplicationCore.Models.DTOs;
 using AngularWebApi.Server.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Http.HttpResults;

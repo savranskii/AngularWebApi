@@ -1,4 +1,4 @@
-﻿using AngularWebApi.Infrastructure.Models;
+﻿using AngularWebApi.ApplicationCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -8,8 +8,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        //builder.ToTable("users");
-
         builder.HasKey(u => u.Id);
         builder.Property(u => u.Login).IsRequired();
         builder.HasIndex(u => u.Login).IsUnique();

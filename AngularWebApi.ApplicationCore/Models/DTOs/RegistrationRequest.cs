@@ -1,4 +1,4 @@
-﻿namespace AngularWebApi.Infrastructure.DTOs;
+﻿namespace AngularWebApi.ApplicationCore.Models.DTOs;
 
 public record RegistrationRequest(
     string Login,

@@ -1,5 +1,5 @@
-﻿using AngularWebApi.Infrastructure.EntityConfigurations;
-using AngularWebApi.Infrastructure.Models;
+﻿using AngularWebApi.ApplicationCore.Entities;
+using AngularWebApi.Infrastructure.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace AngularWebApi.Infrastructure;

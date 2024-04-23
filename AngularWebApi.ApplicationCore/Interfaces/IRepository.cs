@@ -1,7 +1,7 @@
-﻿using AngularWebApi.Infrastructure.DTOs;
-using AngularWebApi.Infrastructure.Models;
+﻿using AngularWebApi.ApplicationCore.Entities;
+using AngularWebApi.ApplicationCore.Models.DTOs;
 
-namespace AngularWebApi.Infrastructure.Interfaces;
+namespace AngularWebApi.ApplicationCore.Interfaces;
 
 public interface IRepository
 {

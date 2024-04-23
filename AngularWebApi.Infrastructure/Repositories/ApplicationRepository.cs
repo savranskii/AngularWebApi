@@ -1,7 +1,7 @@
-﻿using AngularWebApi.Infrastructure.DTOs;
-using AngularWebApi.Infrastructure.Interfaces;
-using AngularWebApi.Infrastructure.Models;
-using AngularWebApi.Infrastructure.Options;
+﻿using AngularWebApi.ApplicationCore.Entities;
+using AngularWebApi.ApplicationCore.Interfaces;
+using AngularWebApi.ApplicationCore.Models.DTOs;
+using AngularWebApi.ApplicationCore.Models.Options;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;

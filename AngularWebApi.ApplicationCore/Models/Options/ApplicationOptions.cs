@@ -1,4 +1,4 @@
-﻿namespace AngularWebApi.Infrastructure.Options;
+﻿namespace AngularWebApi.ApplicationCore.Models.Options;
 
 public class ApplicationOptions
 {

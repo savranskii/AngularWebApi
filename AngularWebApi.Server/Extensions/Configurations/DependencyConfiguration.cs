@@ -1,4 +1,4 @@
-﻿using AngularWebApi.Infrastructure.Interfaces;
+﻿using AngularWebApi.ApplicationCore.Interfaces;
 using AngularWebApi.Infrastructure.Repositories;
 
 namespace AngularWebApi.Server.Extensions.Configurations;

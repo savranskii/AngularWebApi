@@ -1,4 +1,4 @@
-﻿namespace AngularWebApi.Infrastructure.Models;
+﻿namespace AngularWebApi.ApplicationCore.Entities;
 
 public class Province
 {

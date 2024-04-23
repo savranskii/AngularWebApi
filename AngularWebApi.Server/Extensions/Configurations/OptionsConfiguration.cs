@@ -1,4 +1,4 @@
-﻿using AngularWebApi.Infrastructure.Options;
+﻿using AngularWebApi.ApplicationCore.Models.Options;
 
 namespace AngularWebApi.Server.Extensions.Configurations;
 

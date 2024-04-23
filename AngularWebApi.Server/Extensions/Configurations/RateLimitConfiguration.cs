@@ -1,4 +1,4 @@
-﻿using AngularWebApi.Infrastructure.Options;
+﻿using AngularWebApi.ApplicationCore.Models.Options;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
 

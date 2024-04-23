@@ -1,5 +1,5 @@
-﻿using AngularWebApi.Infrastructure.DTOs;
-using AngularWebApi.Infrastructure.Models;
+﻿using AngularWebApi.ApplicationCore.Entities;
+using AngularWebApi.ApplicationCore.Models.DTOs;
 using AutoMapper;
 
 namespace AngularWebApi.Server;

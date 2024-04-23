@@ -1,5 +1,5 @@
-﻿using AngularWebApi.Infrastructure.DTOs;
-using AngularWebApi.Infrastructure.Interfaces;
+﻿using AngularWebApi.ApplicationCore.Interfaces;
+using AngularWebApi.ApplicationCore.Models.DTOs;
 using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 

@@ -1,4 +1,4 @@
-﻿using AngularWebApi.Infrastructure.Models;
+﻿using AngularWebApi.ApplicationCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -8,8 +8,6 @@ public class ProvinceConfiguration : IEntityTypeConfiguration<Province>
 {
     public void Configure(EntityTypeBuilder<Province> builder)
     {
-        //builder.ToTable("provinces");
-
         builder.HasKey(c => c.Id);
         builder.Property(c => c.Name).IsRequired();
         builder.HasIndex(c => c.Name).IsUnique();

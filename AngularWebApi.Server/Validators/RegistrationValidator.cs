@@ -1,4 +1,4 @@
-﻿using AngularWebApi.Infrastructure.DTOs;
+﻿using AngularWebApi.ApplicationCore.Models.DTOs;
 using FluentValidation;
 
 namespace AngularWebApi.Server.Validators;

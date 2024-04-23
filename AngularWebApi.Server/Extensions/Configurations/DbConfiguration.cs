@@ -1,5 +1,5 @@
-﻿using AngularWebApi.Infrastructure;
-using AngularWebApi.Infrastructure.Models;
+﻿using AngularWebApi.ApplicationCore.Entities;
+using AngularWebApi.Infrastructure;
 
 namespace AngularWebApi.Server.Extensions.Configurations;
 
