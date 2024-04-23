@@ -12,7 +12,7 @@ import { confirmPasswordValidator } from '../../utils/validators/PasswordValidat
 export class UserWizardComponent {
 	firstFormGroup = this._formBuilder.group({
 		login: ['', [Validators.required, Validators.email]],
-		password: ['', [Validators.required, Validators.pattern(/^(?:[0-9]+[a-z]|[a-z]+[0-9])[a-z0-9]*$/i)]],
+    password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d).+$/i)]],
 		passwordConfirmation: ['', [Validators.required]],
 		isAgreeToWorkForFood: [true, [Validators.required]]
 	}, { validators: confirmPasswordValidator }) as FormGroup<InfoFormGroup>;
