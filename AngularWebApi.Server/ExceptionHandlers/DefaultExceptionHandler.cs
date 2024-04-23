@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+﻿using AngularWebApi.ApplicationCore.Exceptions;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -11,9 +12,16 @@ public class DefaultExceptionHandler(ILogger<DefaultExceptionHandler> logger) : 
     {
         logger.LogError(exception, "An unexpected error occurred");
 
+        var status = exception switch
+        {
+            UserAlreadyExistException => HttpStatusCode.BadRequest,
+            _ => HttpStatusCode.InternalServerError,
+        };
+
+        httpContext.Response.StatusCode = (int)status;
         await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
         {
-            Status = (int)HttpStatusCode.InternalServerError,
+            Status = (int)status,
             Type = exception.GetType().Name,
             Title = "An unexpected error occurred",
             Detail = exception.Message,

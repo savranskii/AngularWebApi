@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApi.ApplicationCore", "AngularWebApi.ApplicationCore\AngularWebApi.ApplicationCore.csproj", "{19D5824F-D931-4A2D-BE3C-601353B8A573}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3FC34D48-3461-4203-B5F1-DD7600F3E7E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApi.IntegrationTests", "AngularWebApi.IntegrationTests\AngularWebApi.IntegrationTests.csproj", "{2525BB7F-6B3D-456C-9278-1A7DDA79C68B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,9 +39,16 @@ Global
 		{19D5824F-D931-4A2D-BE3C-601353B8A573}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19D5824F-D931-4A2D-BE3C-601353B8A573}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19D5824F-D931-4A2D-BE3C-601353B8A573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2525BB7F-6B3D-456C-9278-1A7DDA79C68B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2525BB7F-6B3D-456C-9278-1A7DDA79C68B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2525BB7F-6B3D-456C-9278-1A7DDA79C68B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2525BB7F-6B3D-456C-9278-1A7DDA79C68B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2525BB7F-6B3D-456C-9278-1A7DDA79C68B} = {3FC34D48-3461-4203-B5F1-DD7600F3E7E7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {19A8633A-E6FD-408F-B2B0-3CDA786769AD}

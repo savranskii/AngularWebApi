@@ -14,13 +14,15 @@ public class ValidationExceptionHandler(ILogger<DefaultExceptionHandler> logger)
 
         if (exception is not ValidationException) return false;
 
+        var errors = ((ValidationException)exception).Errors.Select(e => e.ErrorMessage);
+
         httpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
         await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
         {
             Status = (int)HttpStatusCode.BadRequest,
             Type = exception.GetType().Name,
             Title = "A validation error occurred",
-            Detail = exception.Message,
+            Detail = string.Join(" ", errors),
             Instance = $"{httpContext.Request.Method} {httpContext.Request.Path}"
         }, cancellationToken);
         return true;
