@@ -1,12 +1,11 @@
 using AngularWebApi.ApplicationCore.Models.DTOs;
-using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
 using System.Text;
 using System.Text.Json;
 
 namespace AngularWebApi.IntegrationTests;
 
-public class RegistrationEndpointTests(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>>
+public class RegistrationEndpointTests(CustomWebApplicationFactory<Program> factory) : IClassFixture<CustomWebApplicationFactory<Program>>
 {
     [Theory]
     [InlineData("/api/v1/user/registration")]

@@ -1,10 +1,9 @@
 using AngularWebApi.ApplicationCore.Models.DTOs;
-using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http.Json;
 
 namespace AngularWebApi.IntegrationTests;
 
-public class CountryEndpointTests(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>>
+public class CountryEndpointTests(CustomWebApplicationFactory<Program> factory) : IClassFixture<CustomWebApplicationFactory<Program>>
 {
     [Theory]
     [InlineData("/api/v1/country")]
