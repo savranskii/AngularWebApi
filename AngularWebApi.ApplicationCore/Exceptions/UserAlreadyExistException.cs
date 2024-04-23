@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace AngularWebApi.ApplicationCore.Exceptions;
+﻿namespace AngularWebApi.ApplicationCore.Exceptions;
 
 public class UserAlreadyExistException : Exception
 {

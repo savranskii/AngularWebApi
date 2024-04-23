@@ -13,7 +13,7 @@ public class RegistrationValidatorTests
 
         // Act
         var result = new RegistrationValidator().Validate(data);
-        
+
         // Assert
         Assert.True(result.IsValid);
     }
