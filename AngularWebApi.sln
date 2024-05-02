@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.IntegrationTe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.UnitTests", "AngularWebApi.UnitTests\AngularWebApi.UnitTests.csproj", "{AE2A500E-D69C-4A5A-B19A-7D9BDE65D743}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApi.Application", "AngularWebApi.Application\AngularWebApi.Application.csproj", "{1D684AA0-458D-4400-9B75-290CE0C3C752}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApi.Shared", "AngularWebApi.Shared\AngularWebApi.Shared.csproj", "{1D684AA0-458D-4400-9B75-290CE0C3C752}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
