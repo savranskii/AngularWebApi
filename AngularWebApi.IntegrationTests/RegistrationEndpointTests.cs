@@ -1,28 +1,39 @@
-using AngularWebApi.ApplicationCore.Models.DTOs;
 using System.Net;
 using System.Text;
 using System.Text.Json;
+using AngularWebApi.Application.DTOs;
+using AngularWebApi.Domain.UserAggregate.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AngularWebApi.IntegrationTests;
 
 public class RegistrationEndpointTests(CustomWebApplicationFactory<Program> factory) : IClassFixture<CustomWebApplicationFactory<Program>>
 {
+    private static int _index = 1;
+    
     [Theory]
     [InlineData("/api/v1/user/registration")]
     public async Task Post_Registration_EndpointReturnNoContent(string url)
     {
         // Arrange
+        using var scope = factory.Server.Services.GetService<IServiceScopeFactory>()!.CreateScope();
+        var repo = scope.ServiceProvider.GetRequiredService<IUserRepository>();
         var client = factory.CreateClient();
-        var data = new RegistrationRequest($"test{DateTime.UtcNow.Ticks}@mail.com", "123rtd", true, 1, 1);
+
+        var login = $"test{_index++}@mail.com";
+        
+        var data = new RegistrationRequest(login, "123rtd", true, 1, 1);
         var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
 
         // Act
         var response = await client.PostAsync(url, content);
+        var isExist = await repo.IsUserExistAsync(login);
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
 
         Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        Assert.True(isExist);
     }
 
     [Theory]
@@ -31,7 +42,7 @@ public class RegistrationEndpointTests(CustomWebApplicationFactory<Program> fact
     {
         // Arrange
         var client = factory.CreateClient();
-        var data = new RegistrationRequest($"test{DateTime.UtcNow.Ticks}@mail.com", string.Empty, true, 1, 1);
+        var data = new RegistrationRequest($"test{_index++}@mail.com", string.Empty, true, 1, 1);
         var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
 
         // Act
@@ -47,7 +58,7 @@ public class RegistrationEndpointTests(CustomWebApplicationFactory<Program> fact
     {
         // Arrange
         var client = factory.CreateClient();
-        var email = $"test{DateTime.UtcNow.Ticks}@mail.com";
+        var email = $"test{_index++}@mail.com";
         var data = new RegistrationRequest(email, "123ert", true, 1, 1);
         var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
 

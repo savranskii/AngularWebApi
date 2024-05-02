@@ -21,6 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AngularWebApi.ApplicationCore\AngularWebApi.ApplicationCore.csproj" />
+      <ProjectReference Include="..\AngularWebApi.Application\AngularWebApi.Application.csproj" />
+      <ProjectReference Include="..\AngularWebApi.Domain\AngularWebApi.Domain.csproj" />
     </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using AngularWebApi.Application.Models;
 
 namespace AngularWebApi.Server.ExceptionHandlers;
 
@@ -17,14 +17,12 @@ public class ValidationExceptionHandler(ILogger<DefaultExceptionHandler> logger)
         var errors = ((ValidationException)exception).Errors.Select(e => e.ErrorMessage);
 
         httpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-        await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
-        {
-            Status = (int)HttpStatusCode.BadRequest,
-            Type = exception.GetType().Name,
-            Title = "A validation error occurred",
-            Detail = string.Join(" ", errors),
-            Instance = $"{httpContext.Request.Method} {httpContext.Request.Path}"
-        }, cancellationToken);
+        await httpContext.Response.WriteAsJsonAsync(new ErrorResponse(
+            (int)HttpStatusCode.BadRequest,
+            "A validation error occurred",
+            string.Join(" ", errors),
+            $"{httpContext.Request.Method} {httpContext.Request.Path}"
+        ), cancellationToken);
         return true;
     }
 }

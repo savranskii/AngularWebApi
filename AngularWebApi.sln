@@ -9,13 +9,15 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "angularwebapi.client", "ang
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.Infrastructure", "AngularWebApi.Infrastructure\AngularWebApi.Infrastructure.csproj", "{9E14FB82-99E8-46D5-B8E1-AC44D23A132B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.ApplicationCore", "AngularWebApi.ApplicationCore\AngularWebApi.ApplicationCore.csproj", "{19D5824F-D931-4A2D-BE3C-601353B8A573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.Domain", "AngularWebApi.Domain\AngularWebApi.Domain.csproj", "{19D5824F-D931-4A2D-BE3C-601353B8A573}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3FC34D48-3461-4203-B5F1-DD7600F3E7E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.IntegrationTests", "AngularWebApi.IntegrationTests\AngularWebApi.IntegrationTests.csproj", "{2525BB7F-6B3D-456C-9278-1A7DDA79C68B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApi.UnitTests", "AngularWebApi.UnitTests\AngularWebApi.UnitTests.csproj", "{AE2A500E-D69C-4A5A-B19A-7D9BDE65D743}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.UnitTests", "AngularWebApi.UnitTests\AngularWebApi.UnitTests.csproj", "{AE2A500E-D69C-4A5A-B19A-7D9BDE65D743}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApi.Application", "AngularWebApi.Application\AngularWebApi.Application.csproj", "{1D684AA0-458D-4400-9B75-290CE0C3C752}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{AE2A500E-D69C-4A5A-B19A-7D9BDE65D743}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE2A500E-D69C-4A5A-B19A-7D9BDE65D743}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE2A500E-D69C-4A5A-B19A-7D9BDE65D743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D684AA0-458D-4400-9B75-290CE0C3C752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D684AA0-458D-4400-9B75-290CE0C3C752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D684AA0-458D-4400-9B75-290CE0C3C752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D684AA0-458D-4400-9B75-290CE0C3C752}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

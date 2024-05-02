@@ -1,4 +1,4 @@
-﻿using AngularWebApi.ApplicationCore.Models.DTOs;
+﻿using AngularWebApi.Application.DTOs;
 using AngularWebApi.Server.Validators;
 
 namespace AngularWebApi.UnitTests.Validators;

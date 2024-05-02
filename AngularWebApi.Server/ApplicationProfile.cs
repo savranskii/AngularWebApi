@@ -1,5 +1,5 @@
-﻿using AngularWebApi.ApplicationCore.Entities;
-using AngularWebApi.ApplicationCore.Models.DTOs;
+﻿using AngularWebApi.Application.DTOs;
+using AngularWebApi.Domain.UserAggregate.Entities;
 using AutoMapper;
 
 namespace AngularWebApi.Server;

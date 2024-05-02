@@ -1,4 +1,4 @@
-﻿namespace AngularWebApi.ApplicationCore.Exceptions;
+﻿namespace AngularWebApi.Application.Exceptions;
 
 public class UserAlreadyExistException : Exception
 {

@@ -1,7 +1,7 @@
-﻿using AngularWebApi.ApplicationCore.Exceptions;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
+using AngularWebApi.Application.Exceptions;
+using AngularWebApi.Application.Models;
 
 namespace AngularWebApi.Server.ExceptionHandlers;
 
@@ -19,14 +19,12 @@ public class DefaultExceptionHandler(ILogger<DefaultExceptionHandler> logger) : 
         };
 
         httpContext.Response.StatusCode = (int)status;
-        await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
-        {
-            Status = (int)status,
-            Type = exception.GetType().Name,
-            Title = "An unexpected error occurred",
-            Detail = exception.Message,
-            Instance = $"{httpContext.Request.Method} {httpContext.Request.Path}"
-        }, cancellationToken);
+        await httpContext.Response.WriteAsJsonAsync(new ErrorResponse(
+            (int)status,
+            "An unexpected error occurred",
+            exception.Message,
+            $"{httpContext.Request.Method} {httpContext.Request.Path}"
+        ), cancellationToken);
 
         return true;
     }

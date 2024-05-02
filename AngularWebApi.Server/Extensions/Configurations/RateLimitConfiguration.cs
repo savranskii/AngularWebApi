@@ -1,6 +1,6 @@
-﻿using AngularWebApi.ApplicationCore.Models.Options;
-using Microsoft.AspNetCore.RateLimiting;
+﻿using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
+using AngularWebApi.Application.Configurations;
 
 namespace AngularWebApi.Server.Extensions.Configurations;
 

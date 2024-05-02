@@ -15,7 +15,6 @@ builder.ConfigureDb();
 
 var app = builder.Build();
 
-app.InitDatabase();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseCors(CorsConfiguration.PolicyName);
@@ -31,6 +30,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapUserEndpoint();
+app.MapLocationEndpoint();
 
 app.MapFallbackToFile("/index.html");
 

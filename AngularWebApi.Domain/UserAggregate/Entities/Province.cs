@@ -1,4 +1,4 @@
-﻿namespace AngularWebApi.ApplicationCore.Entities;
+﻿namespace AngularWebApi.Domain.UserAggregate.Entities;
 
 public class Province
 {

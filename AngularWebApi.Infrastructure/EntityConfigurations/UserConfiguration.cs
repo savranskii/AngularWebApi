@@ -1,4 +1,4 @@
-﻿using AngularWebApi.ApplicationCore.Entities;
+﻿using AngularWebApi.Domain.UserAggregate.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

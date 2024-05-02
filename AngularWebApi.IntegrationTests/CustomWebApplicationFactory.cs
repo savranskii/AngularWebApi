@@ -5,6 +5,8 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data.Common;
+using AngularWebApi.Domain.UserAggregate.Repositories;
+using AngularWebApi.Infrastructure.Repositories;
 
 namespace AngularWebApi.IntegrationTests;
 
@@ -40,6 +42,8 @@ public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProg
                 var connection = container.GetRequiredService<DbConnection>();
                 options.UseSqlite(connection);
             });
+
+            services.AddScoped<IUserRepository, UserRepository>();
         });
 
         builder.UseEnvironment("Development");

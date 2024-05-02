@@ -1,11 +1,14 @@
-﻿namespace AngularWebApi.ApplicationCore.Entities;
+﻿using AngularWebApi.Domain.Seeds;
 
-public class User
+namespace AngularWebApi.Domain.UserAggregate.Entities;
+
+public class User : IEntity
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Login { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
     public bool IsAgreeToWorkForFood { get; set; }
+    public string Salt { get; set; } = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
 
     public int CountryId { get; set; }
     public Country Country { get; set; } = null!;

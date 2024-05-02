@@ -1,5 +1,5 @@
-﻿using AngularWebApi.ApplicationCore.Interfaces;
-using AngularWebApi.ApplicationCore.Models.DTOs;
+﻿using AngularWebApi.Application.DTOs;
+using AngularWebApi.Domain.UserAggregate.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 
@@ -7,15 +7,17 @@ namespace AngularWebApi.Server.Endpoints;
 
 public static class CountryEndpoint
 {
-    public static async Task<Ok<List<CountryDto>>> GetCountriesAsync(IRepository repo, IMapper mapper)
+    public static async Task<Ok<List<CountryDto>>> GetCountriesAsync(ICountryRepository repo, IMapper mapper,
+        CancellationToken cancellationToken)
     {
-        var items = await repo.GetCountriesAsync();
+        var items = await repo.GetCountriesAsync(cancellationToken);
         return TypedResults.Ok(mapper.Map<List<CountryDto>>(items));
     }
 
-    public static async Task<Ok<List<ProvinceDto>>> GetProvincesAsync(int id, IRepository repo, IMapper mapper)
+    public static async Task<Ok<List<ProvinceDto>>> GetProvincesAsync(int id, IProvinceRepository repo, IMapper mapper,
+        CancellationToken cancellationToken)
     {
-        var items = await repo.GetProvincesByCountryAsync(id);
+        var items = await repo.GetProvincesByCountryAsync(id, cancellationToken);
         return TypedResults.Ok(mapper.Map<List<ProvinceDto>>(items));
     }
 }

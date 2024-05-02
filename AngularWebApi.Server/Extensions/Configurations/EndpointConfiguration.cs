@@ -1,5 +1,4 @@
 ﻿using AngularWebApi.Server.Endpoints;
-using FluentValidation;
 
 namespace AngularWebApi.Server.Extensions.Configurations;
 
@@ -11,19 +10,16 @@ public static class EndpointConfiguration
             .WithName("UserRegistration")
             .WithOpenApi();
 
-        app.MapGroup("/api/v1/country").MapCountryApi();
     }
-
-    public static RouteGroupBuilder MapCountryApi(this RouteGroupBuilder group)
+    
+    public static void MapLocationEndpoint(this WebApplication app)
     {
-        group.MapGet("/", CountryEndpoint.GetCountriesAsync)
+        app.MapGet("/api/v1/country", CountryEndpoint.GetCountriesAsync)
             .WithName("GetCountries")
             .WithOpenApi();
 
-        group.MapGet("/{id:int}/provinces", CountryEndpoint.GetProvincesAsync)
+        app.MapGet("/api/v1/country/{id:int}/provinces", CountryEndpoint.GetProvincesAsync)
             .WithName("GetProvinces")
             .WithOpenApi();
-
-        return group;
     }
 }

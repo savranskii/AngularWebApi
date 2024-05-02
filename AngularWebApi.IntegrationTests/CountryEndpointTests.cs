@@ -1,5 +1,5 @@
-using AngularWebApi.ApplicationCore.Models.DTOs;
 using System.Net.Http.Json;
+using AngularWebApi.Application.DTOs;
 
 namespace AngularWebApi.IntegrationTests;
 
