@@ -2,7 +2,7 @@
 
 namespace AngularWebApi.Domain.UserAggregate.Entities;
 
-public class User : IEntity
+public class User : IEntity<long>
 {
     public long Id { get; set; }
     public string Login { get; set; } = string.Empty;
@@ -10,10 +10,10 @@ public class User : IEntity
     public bool IsAgreeToWorkForFood { get; set; }
     public string Salt { get; set; } = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
 
-    public int CountryId { get; set; }
+    public long CountryId { get; set; }
     public Country Country { get; set; } = null!;
 
-    public int ProvinceId { get; set; }
+    public long ProvinceId { get; set; }
     public Province Province { get; set; } = null!;
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

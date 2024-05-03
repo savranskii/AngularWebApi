@@ -19,7 +19,7 @@ namespace AngularWebApi.Infrastructure.Migrations
 
             modelBuilder.Entity("AngularWebApi.Domain.UserAggregate.Entities.Country", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -37,23 +37,23 @@ namespace AngularWebApi.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 1L,
                             Name = "Country 1"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 2L,
                             Name = "Country 2"
                         });
                 });
 
             modelBuilder.Entity("AngularWebApi.Domain.UserAggregate.Entities.Province", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CountryId")
+                    b.Property<long>("CountryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -72,32 +72,32 @@ namespace AngularWebApi.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CountryId = 1,
+                            Id = 1L,
+                            CountryId = 1L,
                             Name = "Province 1.1"
                         },
                         new
                         {
-                            Id = 2,
-                            CountryId = 1,
+                            Id = 2L,
+                            CountryId = 1L,
                             Name = "Province 1.2"
                         },
                         new
                         {
-                            Id = 3,
-                            CountryId = 1,
+                            Id = 3L,
+                            CountryId = 1L,
                             Name = "Province 1.3"
                         },
                         new
                         {
-                            Id = 4,
-                            CountryId = 2,
+                            Id = 4L,
+                            CountryId = 2L,
                             Name = "Province 2.1"
                         },
                         new
                         {
-                            Id = 5,
-                            CountryId = 2,
+                            Id = 5L,
+                            CountryId = 2L,
                             Name = "Province 2.2"
                         });
                 });
@@ -108,7 +108,7 @@ namespace AngularWebApi.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CountryId")
+                    b.Property<long>("CountryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreatedAt")
@@ -125,7 +125,7 @@ namespace AngularWebApi.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ProvinceId")
+                    b.Property<long>("ProvinceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Salt")

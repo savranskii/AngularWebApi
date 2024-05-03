@@ -17,7 +17,7 @@ namespace AngularWebApi.Infrastructure.Migrations
                 name: "Countries",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false)
                 },
@@ -30,10 +30,10 @@ namespace AngularWebApi.Infrastructure.Migrations
                 name: "Provinces",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    CountryId = table.Column<int>(type: "INTEGER", nullable: false)
+                    CountryId = table.Column<long>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,8 +56,8 @@ namespace AngularWebApi.Infrastructure.Migrations
                     Password = table.Column<string>(type: "TEXT", nullable: false),
                     IsAgreeToWorkForFood = table.Column<bool>(type: "INTEGER", nullable: false),
                     Salt = table.Column<string>(type: "TEXT", nullable: false),
-                    CountryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProvinceId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CountryId = table.Column<long>(type: "INTEGER", nullable: false),
+                    ProvinceId = table.Column<long>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -82,8 +82,8 @@ namespace AngularWebApi.Infrastructure.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Country 1" },
-                    { 2, "Country 2" }
+                    { 1L, "Country 1" },
+                    { 2L, "Country 2" }
                 });
 
             migrationBuilder.InsertData(
@@ -91,11 +91,11 @@ namespace AngularWebApi.Infrastructure.Migrations
                 columns: new[] { "Id", "CountryId", "Name" },
                 values: new object[,]
                 {
-                    { 1, 1, "Province 1.1" },
-                    { 2, 1, "Province 1.2" },
-                    { 3, 1, "Province 1.3" },
-                    { 4, 2, "Province 2.1" },
-                    { 5, 2, "Province 2.2" }
+                    { 1L, 1L, "Province 1.1" },
+                    { 2L, 1L, "Province 1.2" },
+                    { 3L, 1L, "Province 1.3" },
+                    { 4L, 2L, "Province 2.1" },
+                    { 5L, 2L, "Province 2.2" }
                 });
 
             migrationBuilder.CreateIndex(

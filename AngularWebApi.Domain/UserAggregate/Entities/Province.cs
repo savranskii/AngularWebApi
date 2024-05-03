@@ -1,10 +1,12 @@
-﻿namespace AngularWebApi.Domain.UserAggregate.Entities;
+﻿using AngularWebApi.Domain.Seeds;
 
-public class Province
+namespace AngularWebApi.Domain.UserAggregate.Entities;
+
+public class Province : IEntity<long>
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Name { get; set; } = string.Empty;
 
-    public int CountryId { get; set; }
+    public long CountryId { get; set; }
     public Country Country { get; set; } = null!;
 }

@@ -2,9 +2,5 @@
 
 public interface IEntity<T> where T : struct
 {
-}
-
-public interface IEntity : IEntity<long>
-{
-    long Id { get; protected set; }
+    T Id { get; protected set; }
 }
