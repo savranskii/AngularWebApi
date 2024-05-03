@@ -3,7 +3,8 @@ using AngularWebApi.Application.DTOs;
 
 namespace AngularWebApi.IntegrationTests;
 
-public class CountryEndpointTests(CustomWebApplicationFactory<Program> factory) : IClassFixture<CustomWebApplicationFactory<Program>>
+public class CountryEndpointTests(CustomWebApplicationFactory<Program> factory)
+    : IClassFixture<CustomWebApplicationFactory<Program>>
 {
     [Theory]
     [InlineData("/api/v1/country")]
@@ -47,7 +48,8 @@ public class CountryEndpointTests(CustomWebApplicationFactory<Program> factory) 
 
     [Theory]
     [InlineData("/api/v1/country/{0}/provinces", 0)]
-    public async Task Get_ProvinceListByInvalidCountryId_EndpointReturnSuccessAndCorrectContentType(string url, int countryId)
+    public async Task Get_ProvinceListByInvalidCountryId_EndpointReturnSuccessAndCorrectContentType(string url,
+        int countryId)
     {
         // Arrange
         var client = factory.CreateClient();

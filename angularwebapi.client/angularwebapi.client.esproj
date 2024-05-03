@@ -8,6 +8,6 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\angularwebapi.client\browser\</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\app\constants\" />
+    <Folder Include="src\app\constants\"/>
   </ItemGroup>
 </Project>

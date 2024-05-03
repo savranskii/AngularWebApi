@@ -9,9 +9,8 @@ public static class EndpointConfiguration
         app.MapPost("/api/v1/user/registration", UserEndpoint.RegistrationAsync)
             .WithName("UserRegistration")
             .WithOpenApi();
-
     }
-    
+
     public static void MapLocationEndpoint(this WebApplication app)
     {
         app.MapGet("/api/v1/country", CountryEndpoint.GetCountriesAsync)

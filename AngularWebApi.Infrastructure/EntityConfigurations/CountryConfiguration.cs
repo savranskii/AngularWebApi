@@ -18,7 +18,7 @@ public class CountryConfiguration : IEntityTypeConfiguration<Country>
         builder.HasData(new List<Country>
         {
             new(1, "Country 1"),
-            new(2, "Country 2"),
+            new(2, "Country 2")
         });
     }
 }

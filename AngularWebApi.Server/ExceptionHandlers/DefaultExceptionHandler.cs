@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using System.Net;
+﻿using System.Net;
 using AngularWebApi.Application.Exceptions;
 using AngularWebApi.Application.Models;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace AngularWebApi.Server.ExceptionHandlers;
 
@@ -15,7 +15,7 @@ public class DefaultExceptionHandler(ILogger<DefaultExceptionHandler> logger) : 
         var status = exception switch
         {
             UserAlreadyExistException => HttpStatusCode.BadRequest,
-            _ => HttpStatusCode.InternalServerError,
+            _ => HttpStatusCode.InternalServerError
         };
 
         httpContext.Response.StatusCode = (int)status;

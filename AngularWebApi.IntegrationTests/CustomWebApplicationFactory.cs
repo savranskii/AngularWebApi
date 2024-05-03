@@ -1,9 +1,9 @@
-﻿using AngularWebApi.Infrastructure;
+﻿using System.Data.Common;
+using AngularWebApi.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System.Data.Common;
 
 namespace AngularWebApi.IntegrationTests;
 

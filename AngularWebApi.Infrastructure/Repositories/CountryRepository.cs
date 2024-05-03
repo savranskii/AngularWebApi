@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using AngularWebApi.Domain.UserAggregate.Entities;
+﻿using AngularWebApi.Domain.UserAggregate.Entities;
 using AngularWebApi.Domain.UserAggregate.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace AngularWebApi.Infrastructure.Repositories;
 

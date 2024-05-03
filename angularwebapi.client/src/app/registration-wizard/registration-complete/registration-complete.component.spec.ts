@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RegistrationCompleteComponent } from './registration-complete.component';
+import {RegistrationCompleteComponent} from './registration-complete.component';
 
 describe('RegistrationCompleteComponent', () => {
   let component: RegistrationCompleteComponent;
@@ -10,8 +10,8 @@ describe('RegistrationCompleteComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [RegistrationCompleteComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(RegistrationCompleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

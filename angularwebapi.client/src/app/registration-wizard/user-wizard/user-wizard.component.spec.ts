@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UserWizardComponent } from './user-wizard.component';
+import {UserWizardComponent} from './user-wizard.component';
 
 describe('UserWizardComponent', () => {
   let component: UserWizardComponent;
@@ -10,8 +10,8 @@ describe('UserWizardComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UserWizardComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(UserWizardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

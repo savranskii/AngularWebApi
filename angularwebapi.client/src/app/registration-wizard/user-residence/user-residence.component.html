@@ -1,35 +1,35 @@
 <div class="step-wrapper">
-	<form [formGroup]="secondFormGroup">
-		<p>
-			<mat-form-field>
-				<mat-label>Country</mat-label>
-				<mat-select [formControl]="secondFormGroup.controls.country" (selectionChange)="loadProvinces($event)">
-					<mat-option>--</mat-option>
-					<mat-option *ngFor="let c of countries" [value]="c.id">{{c.name}}</mat-option>
-				</mat-select>
-				<mat-error *ngIf="hasCountryError()">
-					Country is a required field.
-				</mat-error>
-			</mat-form-field>
-		</p>
-		<p>
-			<mat-form-field>
-				<mat-label>Province</mat-label>
-				<mat-select [formControl]="secondFormGroup.controls.province">
-					<mat-option>--</mat-option>
-					<mat-option *ngFor="let p of provinces" [value]="p.id">{{p.name}}</mat-option>
-				</mat-select>
-				<mat-error *ngIf="hasProvinceError()">
-					Province is a required field.
-				</mat-error>
-			</mat-form-field>
-		</p>
-		<div *ngIf="!isSending">
-			<button mat-button matStepperPrevious>Back</button>
-			<button mat-button (click)="save()">Submit</button>
-		</div>
-		<div *ngIf="isSending || isLoading" class="loader">
-			<mat-spinner></mat-spinner>
-		</div>
-	</form>
+  <form [formGroup]="secondFormGroup">
+    <p>
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <mat-select (selectionChange)="loadProvinces($event)" [formControl]="secondFormGroup.controls.country">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let c of countries" [value]="c.id">{{ c.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="hasCountryError()">
+          Country is a required field.
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Province</mat-label>
+        <mat-select [formControl]="secondFormGroup.controls.province">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let p of provinces" [value]="p.id">{{ p.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="hasProvinceError()">
+          Province is a required field.
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <div *ngIf="!isSending">
+      <button mat-button matStepperPrevious>Back</button>
+      <button (click)="save()" mat-button>Submit</button>
+    </div>
+    <div *ngIf="isSending || isLoading" class="loader">
+      <mat-spinner></mat-spinner>
+    </div>
+  </form>
 </div>

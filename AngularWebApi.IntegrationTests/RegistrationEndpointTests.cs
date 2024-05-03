@@ -7,10 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AngularWebApi.IntegrationTests;
 
-public class RegistrationEndpointTests(CustomWebApplicationFactory<Program> factory) : IClassFixture<CustomWebApplicationFactory<Program>>
+public class RegistrationEndpointTests(CustomWebApplicationFactory<Program> factory)
+    : IClassFixture<CustomWebApplicationFactory<Program>>
 {
     private static int _index = 1;
-    
+
     [Theory]
     [InlineData("/api/v1/user/registration")]
     public async Task Post_Registration_EndpointReturnNoContent(string url)
@@ -21,7 +22,7 @@ public class RegistrationEndpointTests(CustomWebApplicationFactory<Program> fact
         var client = factory.CreateClient();
 
         var login = $"test{_index++}@mail.com";
-        
+
         var data = new RegistrationRequest(login, "123rtd", true, 1, 1);
         var content = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
 

@@ -1,7 +1,7 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Diagnostics;
-using System.Net;
+﻿using System.Net;
 using AngularWebApi.Application.Models;
+using FluentValidation;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace AngularWebApi.Server.ExceptionHandlers;
 

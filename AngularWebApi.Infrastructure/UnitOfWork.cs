@@ -6,14 +6,19 @@ namespace AngularWebApi.Infrastructure;
 
 public class UnitOfWork(ApplicationDbContext context) : IUnitOfWork, IAsyncDisposable
 {
-    private IUserRepository? _userRepository;
     private ICountryRepository? _countryRepository;
     private IProvinceRepository? _provinceRepository;
-    
+    private IUserRepository? _userRepository;
+
+    public async ValueTask DisposeAsync()
+    {
+        await context.DisposeAsync();
+    }
+
     public IUserRepository UserRepository => _userRepository ??= new UserRepository(context);
     public ICountryRepository CountryRepository => _countryRepository ??= new CountryRepository(context);
     public IProvinceRepository ProvinceRepository => _provinceRepository ??= new ProvinceRepository(context);
-    
+
     public async Task SaveEntitiesAsync(CancellationToken ct = default)
     {
         await context.SaveChangesAsync(ct);
@@ -22,10 +27,5 @@ public class UnitOfWork(ApplicationDbContext context) : IUnitOfWork, IAsyncDispo
     public void Dispose()
     {
         context.Dispose();
-    }
-
-    public async ValueTask DisposeAsync()
-    {
-        await context.DisposeAsync();
     }
 }

@@ -17,7 +17,8 @@ public static class UserEndpoint
         if (await unitOfWork.UserRepository.IsUserExistAsync(req.Login))
             throw new UserAlreadyExistException($"User with login '{req.Login}' already exist.");
 
-        unitOfWork.UserRepository.RegisterUser(req.Login, req.Password, req.IsAgreeToWorkForFood, req.Country, req.Province);
+        unitOfWork.UserRepository.RegisterUser(req.Login, req.Password, req.IsAgreeToWorkForFood, req.Country,
+            req.Province);
         await unitOfWork.SaveEntitiesAsync(cancellationToken);
 
         return TypedResults.NoContent();
