@@ -17,8 +17,8 @@ public class CountryConfiguration : IEntityTypeConfiguration<Country>
             .IsRequired();
         builder.HasData(new List<Country>
         {
-            new() { Id = 1, Name = "Country 1" },
-            new() { Id = 2, Name = "Country 2" },
+            new(1, "Country 1"),
+            new(2, "Country 2"),
         });
     }
 }

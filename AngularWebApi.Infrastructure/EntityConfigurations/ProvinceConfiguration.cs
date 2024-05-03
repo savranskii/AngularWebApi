@@ -17,11 +17,11 @@ public class ProvinceConfiguration : IEntityTypeConfiguration<Province>
 
         builder.HasData(new List<Province>
         {
-            new() { Id = 1, CountryId = 1, Name = "Province 1.1" },
-            new() { Id = 2, CountryId = 1, Name = "Province 1.2" },
-            new() { Id = 3, CountryId = 1, Name = "Province 1.3" },
-            new() { Id = 4, CountryId = 2, Name = "Province 2.1" },
-            new() { Id = 5, CountryId = 2, Name = "Province 2.2" }
+            new(1, 1, "Province 1.1"),
+            new(2, 1, "Province 1.2"),
+            new(3, 1, "Province 1.3"),
+            new(4, 2, "Province 2.1"),
+            new(5, 2, "Province 2.2")
         });
     }
 }

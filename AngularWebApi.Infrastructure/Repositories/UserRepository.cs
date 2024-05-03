@@ -14,13 +14,8 @@ public class UserRepository(ApplicationDbContext context) : IUserRepository
 
     public void RegisterUser(string login, string password, bool isAgreeToWorkForFood, int countryId, int provinceId)
     {
-        context.Users.Add(new User
-        {
-            Login = login,
-            Password = PasswordHelper.SaltPassword(password, ""),
-            IsAgreeToWorkForFood = isAgreeToWorkForFood,
-            CountryId = countryId,
-            ProvinceId = provinceId
-        });
+        var user = new User(login, isAgreeToWorkForFood, countryId, provinceId);
+        user.UpdatePassword(PasswordHelper.SaltPassword(password, user.Salt));
+        context.Users.Add(user);
     }
 }

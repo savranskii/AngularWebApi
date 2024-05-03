@@ -5,16 +5,29 @@ namespace AngularWebApi.Domain.UserAggregate.Entities;
 public class User : IEntity<long>
 {
     public long Id { get; set; }
-    public string Login { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
-    public bool IsAgreeToWorkForFood { get; set; }
-    public string Salt { get; set; } = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+    public string Login { get; private set; } = string.Empty;
+    public string Password { get; private set; } = string.Empty;
+    public bool IsAgreeToWorkForFood { get; private set; }
+    public string Salt { get; private set; } = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+    public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
+    
+    public long CountryId { get; private set; }
+    public Country Country { get; private set; } = null!;
 
-    public long CountryId { get; set; }
-    public Country Country { get; set; } = null!;
+    public long ProvinceId { get; private set; }
+    public Province Province { get; private set; } = null!;
+    
+    private User()
+    {
+    }
 
-    public long ProvinceId { get; set; }
-    public Province Province { get; set; } = null!;
+    public User(string login, bool isAgreeToWorkForFood, long countryId, long provinceId)
+    {
+        Login = login;
+        IsAgreeToWorkForFood = isAgreeToWorkForFood;
+        CountryId = countryId;
+        ProvinceId = provinceId;
+    }
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public void UpdatePassword(string password) => Password = password;
 }
