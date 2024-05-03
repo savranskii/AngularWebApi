@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34814.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.Server", "AngularWebApi.Server\AngularWebApi.Server.csproj", "{7306513A-2AF4-46B3-99B0-23CE86B2959E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Server", "WebApi.Server\WebApi.Server.csproj", "{7306513A-2AF4-46B3-99B0-23CE86B2959E}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "angularwebapi.client", "angularwebapi.client\angularwebapi.client.esproj", "{4911412C-0720-4B28-AEF6-3ED71C9834F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.Infrastructure", "AngularWebApi.Infrastructure\AngularWebApi.Infrastructure.csproj", "{9E14FB82-99E8-46D5-B8E1-AC44D23A132B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Infrastructure", "WebApi.Infrastructure\WebApi.Infrastructure.csproj", "{9E14FB82-99E8-46D5-B8E1-AC44D23A132B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.Domain", "AngularWebApi.Domain\AngularWebApi.Domain.csproj", "{19D5824F-D931-4A2D-BE3C-601353B8A573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Domain", "WebApi.Domain\WebApi.Domain.csproj", "{19D5824F-D931-4A2D-BE3C-601353B8A573}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3FC34D48-3461-4203-B5F1-DD7600F3E7E7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.IntegrationTests", "AngularWebApi.IntegrationTests\AngularWebApi.IntegrationTests.csproj", "{2525BB7F-6B3D-456C-9278-1A7DDA79C68B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.IntegrationTests", "WebApi.IntegrationTests\WebApi.IntegrationTests.csproj", "{2525BB7F-6B3D-456C-9278-1A7DDA79C68B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWebApi.UnitTests", "AngularWebApi.UnitTests\AngularWebApi.UnitTests.csproj", "{AE2A500E-D69C-4A5A-B19A-7D9BDE65D743}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.UnitTests", "WebApi.UnitTests\WebApi.UnitTests.csproj", "{AE2A500E-D69C-4A5A-B19A-7D9BDE65D743}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWebApi.Shared", "AngularWebApi.Shared\AngularWebApi.Shared.csproj", "{1D684AA0-458D-4400-9B75-290CE0C3C752}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Shared", "WebApi.Shared\WebApi.Shared.csproj", "{1D684AA0-458D-4400-9B75-290CE0C3C752}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

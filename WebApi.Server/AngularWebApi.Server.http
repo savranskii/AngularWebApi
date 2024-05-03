@@ -1,0 +1,24 @@
+@WebApi.Server_HostAddress = https://localhost:7207
+
+###
+
+GET {{WebApi.Server_HostAddress}}/api/v1/country
+
+###
+
+GET {{WebApi.Server_HostAddress}}/api/v1/country/1/provinces
+
+###
+
+POST {{WebApi.Server_HostAddress}}/api/v1/user/registration
+Content-Type: application/json
+
+{
+  "login": "test@mail.com",
+  "password": "123rwe",
+  "isAgreeToWorkForFood": true,
+  "country": 1,
+  "province": 2
+}
+
+###
