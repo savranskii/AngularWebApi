@@ -1,9 +1,9 @@
 <mat-stepper #stepper [linear]="true">
-  <mat-step [stepControl]="firstFormGroup" label="Step 1">
-    <app-user-info [formGroup]="firstFormGroup"></app-user-info>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup" label="Step 2">
-    <app-user-residence [firstFormGroup]="firstFormGroup" [secondFormGroup]="secondFormGroup"
-                        [stepper]="stepper"></app-user-residence>
-  </mat-step>
+	<mat-step [stepControl]="firstFormGroup" label="Step 1">
+		<app-user-info [formGroup]="firstFormGroup"></app-user-info>
+	</mat-step>
+	<mat-step [stepControl]="secondFormGroup" label="Step 2">
+		<app-user-residence [firstFormGroup]="firstFormGroup" [secondFormGroup]="secondFormGroup"
+			[stepper]="stepper"></app-user-residence>
+	</mat-step>
 </mat-stepper>

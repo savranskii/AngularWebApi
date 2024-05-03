@@ -1,6 +1,6 @@
-import {FormControl} from "@angular/forms";
+import { FormControl } from "@angular/forms";
 
 export interface ResidenceFormGroup {
-  country: FormControl<number | null>;
-  province: FormControl<number | null>;
+	country: FormControl<number | null>;
+	province: FormControl<number | null>;
 }

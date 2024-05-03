@@ -1,7 +1,7 @@
-export interface ResponseError {
-  detail: string;
-  instance: string;
-  status: number;
-  title: string;
-  type: string;
+export type ResponseError = {
+	detail: string;
+	instance: string;
+	status: number;
+	title: string;
+	type: string;
 }
