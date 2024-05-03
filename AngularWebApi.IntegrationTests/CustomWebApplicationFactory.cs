@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data.Common;
-using AngularWebApi.Domain.UserAggregate.Entities;
 
 namespace AngularWebApi.IntegrationTests;
 

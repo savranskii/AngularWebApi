@@ -39,8 +39,10 @@ public class CountryEndpointTests(CustomWebApplicationFactory<Program> factory) 
         response.EnsureSuccessStatusCode(); // Status Code 200-299
 
         Assert.Equal("application/json; charset=utf-8", response.Content.Headers.ContentType?.ToString());
+        Assert.Equal(3, result?.Count);
         Assert.True(result?.Exists(c => c.Name == "Province 1.1"));
         Assert.True(result?.Exists(c => c.Name == "Province 1.2"));
+        Assert.True(result?.Exists(c => c.Name == "Province 1.3"));
     }
 
     [Theory]
