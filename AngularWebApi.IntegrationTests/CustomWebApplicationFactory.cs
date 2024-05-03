@@ -1,12 +1,10 @@
 ﻿using AngularWebApi.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data.Common;
-using AngularWebApi.Domain.UserAggregate.Repositories;
-using AngularWebApi.Infrastructure.Repositories;
+using AngularWebApi.Domain.UserAggregate.Entities;
 
 namespace AngularWebApi.IntegrationTests;
 
@@ -18,32 +16,25 @@ public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProg
         {
             var dbContextDescriptor = services.SingleOrDefault(
                 d => d.ServiceType ==
-                    typeof(DbContextOptions<ApplicationDbContext>));
+                     typeof(DbContextOptions<ApplicationDbContext>));
 
             services.Remove(dbContextDescriptor!);
 
             var dbConnectionDescriptor = services.SingleOrDefault(
                 d => d.ServiceType ==
-                    typeof(DbConnection));
+                     typeof(DbConnection));
 
             services.Remove(dbConnectionDescriptor!);
 
-            // Create open SqLiteConnection so EF won't automatically close it.
-            services.AddSingleton<DbConnection>(container =>
-            {
-                var connection = new SqliteConnection("DataSource=:memory:");
-                connection.Open();
+            services.AddDbContextFactory<ApplicationDbContext>(o => o
+                .UseInMemoryDatabase("TestDb")
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution));
 
-                return connection;
-            });
+            var serviceProvider = services.BuildServiceProvider();
+            using var scope = serviceProvider.CreateScope();
 
-            services.AddDbContext<ApplicationDbContext>((container, options) =>
-            {
-                var connection = container.GetRequiredService<DbConnection>();
-                options.UseSqlite(connection);
-            });
-
-            services.AddScoped<IUserRepository, UserRepository>();
+            var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            db.Database.EnsureCreated();
         });
 
         builder.UseEnvironment("Development");

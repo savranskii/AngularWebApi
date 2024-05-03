@@ -14,10 +14,14 @@ public class CountryEndpointTests(CustomWebApplicationFactory<Program> factory) 
 
         // Act
         var response = await client.GetAsync(url);
+        var result = await response.Content.ReadFromJsonAsync<List<CountryDto>>();
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
         Assert.Equal("application/json; charset=utf-8", response.Content.Headers.ContentType?.ToString());
+        Assert.Equal(2, result?.Count);
+        Assert.True(result?.Exists(c => c.Name == "Country 1"));
+        Assert.True(result?.Exists(c => c.Name == "Country 2"));
     }
 
     [Theory]
@@ -29,14 +33,14 @@ public class CountryEndpointTests(CustomWebApplicationFactory<Program> factory) 
 
         // Act
         var response = await client.GetAsync(string.Format(url, countryId));
+        var result = await response.Content.ReadFromJsonAsync<List<ProvinceDto>>();
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
 
-        var result = await response.Content.ReadFromJsonAsync<List<ProvinceDto>>();
-
         Assert.Equal("application/json; charset=utf-8", response.Content.Headers.ContentType?.ToString());
-        Assert.True(result?.Count > 0);
+        Assert.True(result?.Exists(c => c.Name == "Province 1.1"));
+        Assert.True(result?.Exists(c => c.Name == "Province 1.2"));
     }
 
     [Theory]
@@ -55,6 +59,6 @@ public class CountryEndpointTests(CustomWebApplicationFactory<Program> factory) 
         var result = await response.Content.ReadFromJsonAsync<List<ProvinceDto>>();
 
         Assert.Equal("application/json; charset=utf-8", response.Content.Headers.ContentType?.ToString());
-        Assert.True(result?.Count == 0);
+        Assert.Equal(0, result?.Count);
     }
 }

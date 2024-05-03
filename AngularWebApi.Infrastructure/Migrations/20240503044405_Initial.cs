@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace AngularWebApi.Infrastructure.Migrations
 {
@@ -47,11 +50,12 @@ namespace AngularWebApi.Infrastructure.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Login = table.Column<string>(type: "TEXT", nullable: false),
                     Password = table.Column<string>(type: "TEXT", nullable: false),
                     IsAgreeToWorkForFood = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Salt = table.Column<string>(type: "TEXT", nullable: false),
                     CountryId = table.Column<int>(type: "INTEGER", nullable: false),
                     ProvinceId = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
@@ -71,6 +75,27 @@ namespace AngularWebApi.Infrastructure.Migrations
                         principalTable: "Provinces",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Countries",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Country 1" },
+                    { 2, "Country 2" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Provinces",
+                columns: new[] { "Id", "CountryId", "Name" },
+                values: new object[,]
+                {
+                    { 1, 1, "Province 1.1" },
+                    { 2, 1, "Province 1.2" },
+                    { 3, 1, "Province 1.3" },
+                    { 4, 2, "Province 2.1" },
+                    { 5, 2, "Province 2.2" }
                 });
 
             migrationBuilder.CreateIndex(

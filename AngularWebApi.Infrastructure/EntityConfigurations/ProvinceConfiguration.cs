@@ -14,5 +14,14 @@ public class ProvinceConfiguration : IEntityTypeConfiguration<Province>
         builder.HasOne(c => c.Country)
             .WithMany(p => p.Provinces)
             .IsRequired();
+
+        builder.HasData(new List<Province>
+        {
+            new() { Id = 1, CountryId = 1, Name = "Province 1.1" },
+            new() { Id = 2, CountryId = 1, Name = "Province 1.2" },
+            new() { Id = 3, CountryId = 1, Name = "Province 1.3" },
+            new() { Id = 4, CountryId = 2, Name = "Province 2.1" },
+            new() { Id = 5, CountryId = 2, Name = "Province 2.2" }
+        });
     }
 }

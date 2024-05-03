@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AngularWebApi.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240421154322_Initial")]
+    [Migration("20240503044405_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace AngularWebApi.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
-            modelBuilder.Entity("AngularWebApi.Infrastructure.Models.Country", b =>
+            modelBuilder.Entity("AngularWebApi.Domain.UserAggregate.Entities.Country", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,9 +36,21 @@ namespace AngularWebApi.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Country 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Country 2"
+                        });
                 });
 
-            modelBuilder.Entity("AngularWebApi.Infrastructure.Models.Province", b =>
+            modelBuilder.Entity("AngularWebApi.Domain.UserAggregate.Entities.Province", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,11 +71,43 @@ namespace AngularWebApi.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Provinces");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CountryId = 1,
+                            Name = "Province 1.1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CountryId = 1,
+                            Name = "Province 1.2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CountryId = 1,
+                            Name = "Province 1.3"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CountryId = 2,
+                            Name = "Province 2.1"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CountryId = 2,
+                            Name = "Province 2.2"
+                        });
                 });
 
-            modelBuilder.Entity("AngularWebApi.Infrastructure.Models.User", b =>
+            modelBuilder.Entity("AngularWebApi.Domain.UserAggregate.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -87,6 +131,10 @@ namespace AngularWebApi.Infrastructure.Migrations
                     b.Property<int>("ProvinceId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
@@ -99,9 +147,9 @@ namespace AngularWebApi.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("AngularWebApi.Infrastructure.Models.Province", b =>
+            modelBuilder.Entity("AngularWebApi.Domain.UserAggregate.Entities.Province", b =>
                 {
-                    b.HasOne("AngularWebApi.Infrastructure.Models.Country", "Country")
+                    b.HasOne("AngularWebApi.Domain.UserAggregate.Entities.Country", "Country")
                         .WithMany("Provinces")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -110,15 +158,15 @@ namespace AngularWebApi.Infrastructure.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("AngularWebApi.Infrastructure.Models.User", b =>
+            modelBuilder.Entity("AngularWebApi.Domain.UserAggregate.Entities.User", b =>
                 {
-                    b.HasOne("AngularWebApi.Infrastructure.Models.Country", "Country")
+                    b.HasOne("AngularWebApi.Domain.UserAggregate.Entities.Country", "Country")
                         .WithMany()
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AngularWebApi.Infrastructure.Models.Province", "Province")
+                    b.HasOne("AngularWebApi.Domain.UserAggregate.Entities.Province", "Province")
                         .WithMany()
                         .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -129,7 +177,7 @@ namespace AngularWebApi.Infrastructure.Migrations
                     b.Navigation("Province");
                 });
 
-            modelBuilder.Entity("AngularWebApi.Infrastructure.Models.Country", b =>
+            modelBuilder.Entity("AngularWebApi.Domain.UserAggregate.Entities.Country", b =>
                 {
                     b.Navigation("Provinces");
                 });

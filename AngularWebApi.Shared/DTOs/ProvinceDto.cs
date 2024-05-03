@@ -1,3 +1,8 @@
-﻿namespace AngularWebApi.Application.DTOs;
+﻿using System.Text.Json.Serialization;
 
-public record ProvinceDto(int Id, string Name);
+namespace AngularWebApi.Application.DTOs;
+
+public record ProvinceDto(
+    [property:JsonPropertyName("id")] int Id,
+    [property:JsonPropertyName("name")] string Name
+);
