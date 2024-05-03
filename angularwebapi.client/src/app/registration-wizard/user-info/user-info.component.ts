@@ -9,12 +9,9 @@ import { FormGroup } from '@angular/forms';
 export class UserInfoComponent {
 	@Input({ required: true }) formGroup!: FormGroup;
 
-	isUsed(controlName: string): boolean {
-		return this.formGroup.controls[controlName].invalid &&
-			this.formGroup.controls[controlName].dirty;
-	}
-
 	hasError(controlName: string): boolean {
-		return this.isUsed(controlName) && this.formGroup.controls[controlName].errors != null;
+		return this.formGroup.controls[controlName].invalid &&
+			this.formGroup.controls[controlName].dirty &&
+			this.formGroup.controls[controlName].errors != null;
 	}
 }

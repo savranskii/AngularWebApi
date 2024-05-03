@@ -7,5 +7,5 @@ export const confirmPasswordValidator: ValidatorFn = (controls: AbstractControl)
 	if (!isMatch)
 		(controls as FormGroup<InfoFormGroup>).controls.passwordConfirmation.setErrors({ min: true });
 
-	return isMatch ? null : { passwordNoMatch: true };
+	return isMatch ? null : { passwordConfirmation: true };
 };

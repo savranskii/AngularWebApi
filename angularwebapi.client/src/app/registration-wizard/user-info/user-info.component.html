@@ -24,7 +24,7 @@
 				<input formControlName="passwordConfirmation" matInput placeholder="Confirm password" required
 					type="password">
 			</mat-form-field>
-			<mat-error *ngIf="isUsed('passwordConfirmation') && formGroup.errors?.['passwordNoMatch']">
+			<mat-error *ngIf="hasError('passwordConfirmation')">
 				Password does'nt match.
 			</mat-error>
 		</div>

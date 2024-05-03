@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InfoFormGroup } from '../models/InfoFormGroup';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ResidenceFormGroup } from '../models/ResidenceFormGroup';
 import { confirmPasswordValidator } from '../../utils/validators/PasswordValidator';
+import { InfoFormGroup } from '../models/InfoFormGroup';
 
 @Component({
 	selector: 'app-user-wizard',
@@ -10,17 +10,17 @@ import { confirmPasswordValidator } from '../../utils/validators/PasswordValidat
 	styleUrl: './user-wizard.component.css',
 })
 export class UserWizardComponent {
-	firstFormGroup = this._formBuilder.group({
-		login: ['', [Validators.required, Validators.email]],
-		password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d).+$/i)]],
-		passwordConfirmation: ['', [Validators.required]],
-		isAgreeToWorkForFood: [true, [Validators.required]]
-	}, { validators: confirmPasswordValidator }) as FormGroup<InfoFormGroup>;
+	firstFormGroup = this._formBuilder.group<InfoFormGroup>({
+		login: new FormControl('', [Validators.required, Validators.email]),
+		password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d).+$/i)]),
+		passwordConfirmation: new FormControl('', [Validators.required]),
+		isAgreeToWorkForFood: new FormControl(true, [Validators.required])
+	}, { validators: confirmPasswordValidator });
 
-	secondFormGroup = this._formBuilder.group({
-		country: [null, [Validators.required]],
-		province: [null, [Validators.required]],
-	}) as FormGroup<ResidenceFormGroup>;
+	secondFormGroup = this._formBuilder.group<ResidenceFormGroup>({
+		country: new FormControl(null, [Validators.required]),
+		province: new FormControl(null, [Validators.required]),
+	});
 
 	constructor(private _formBuilder: FormBuilder) {
 	}

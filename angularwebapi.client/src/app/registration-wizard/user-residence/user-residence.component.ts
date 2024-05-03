@@ -84,12 +84,14 @@ export class UserResidenceComponent implements OnInit {
 		this.isSending = true;
 
 		const request = {
-			...this.firstFormGroup.value,
-			...this.secondFormGroup.value
-		};
-		delete request.passwordConfirmation;
+			login: this.firstFormGroup.controls.login.value,
+			password: this.firstFormGroup.controls.password.value,
+			isAgreeToWorkForFood: this.firstFormGroup.controls.isAgreeToWorkForFood.value,
+			country: this.secondFormGroup.controls.country.value,
+			province: this.secondFormGroup.controls.province.value,
+		} as RegistrationRequest;
 
-		this._registrationService.completeRegistration(request as RegistrationRequest).subscribe({
+		this._registrationService.completeRegistration(request).subscribe({
 			next: () => {
 				this.stepper.reset();
 				this.isSending = false;
